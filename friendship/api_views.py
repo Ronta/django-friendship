@@ -25,7 +25,7 @@ except ImportError:
 class FriendshipRequestViewSet(generics.ListAPIView):
     queryset = FriendshipRequest.objects.all()
     serializer_class = FriendshipRequestSerializers
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     filter_class = FriendshipFilter
 
     def get_queryset(self):
@@ -38,7 +38,7 @@ class FriendshipRequestViewSet(generics.ListAPIView):
 class FriendsApiViewset(generics.ListAPIView):
     queryset = Friend.objects.all()
     serializer_class = FriendSerializers
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     filter_class = FriendFilter
 
     def get_queryset(self):
@@ -49,7 +49,7 @@ class FriendsApiViewset(generics.ListAPIView):
 
 class FriendshipAddFriendViewset(generics.CreateAPIView):
     queryset = Friend.objects.all()
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     serializer_class = FriendshipRequestSerializers
 
     def create(self, request, *args, **kwargs):
@@ -97,7 +97,7 @@ class FriendshipAddFriendViewset(generics.CreateAPIView):
 
 class FriendshipAcceptFriendViewset(generics.CreateAPIView):
     queryset = FriendshipRequest.objects.all()
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     serializer_class = FriendshipRequestSerializers
 
     def create(self, request, *args, **kwargs):
@@ -117,7 +117,7 @@ class FriendshipAcceptFriendViewset(generics.CreateAPIView):
 
 class FriendshipRejectFriendViewset(generics.CreateAPIView):
     queryset = FriendshipRequest.objects.all()
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     serializer_class = FriendshipRequestSerializers
 
     def create(self, request, *args, **kwargs):
@@ -137,7 +137,7 @@ class FriendshipRejectFriendViewset(generics.CreateAPIView):
 
 class FriendshipCancelFriendViewset(generics.CreateAPIView):
     queryset = FriendshipRequest.objects.all()
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     serializer_class = FriendshipRequestSerializers
 
     def create(self, request, *args, **kwargs):
@@ -157,7 +157,7 @@ class FriendshipCancelFriendViewset(generics.CreateAPIView):
 
 class FriendsRemoveViewset(generics.DestroyAPIView):
     queryset = Friend.objects.all()
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     serializer_class = FriendSerializers
 
     def delete(self, request, *args, **kwargs):
@@ -176,7 +176,7 @@ class FriendsRemoveViewset(generics.DestroyAPIView):
 
 class AreFriendsVieset(generics.GenericAPIView):
     queryset = Friend.objects.all()
-    permission_classes = IsAuthenticated
+    permission_classes = (IsAuthenticated,)
     serializer_class = FriendSerializers
     http_method_names = ['get']
 
