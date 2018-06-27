@@ -9,11 +9,15 @@ except ImportError:
 
 import django_filters
 
-from rest_framework import filters
+try:
+    from rest_framewor.filters import FilterSet
+except ImportError:
+    from django_filters.filterset import FilterSet
+
 from friendship.models import Friend, FriendshipRequest
 
 
-class FriendFilter(filters.FilterSet):
+class FriendFilter(FilterSet):
     to_user = django_filters.CharFilter(name="to_user__username", lookup_expr='icontains')
     from_user = django_filters.CharFilter(name="from_user__username", lookup_expr='icontains')
 
@@ -22,7 +26,7 @@ class FriendFilter(filters.FilterSet):
         fields = ['to_user', 'from_user']
 
 
-class FriendshipFilter(filters.FilterSet):
+class FriendshipFilter(FilterSet):
     to_user = django_filters.CharFilter(name="to_user__username", lookup_expr='icontains')
     from_user = django_filters.CharFilter(name="from_user__username", lookup_expr='icontains')
 
